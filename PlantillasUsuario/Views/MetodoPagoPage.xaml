@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlantillasUsuario.Views.MetodoPagoPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20,16,20,24">
+
+        <!-- Flecha Regresar -->
+        <ImageButton Grid.Row="0"
+                     Source="flecha.png"
+                     Clicked="OnRegresarClicked"
+                     HeightRequest="34"
+                     WidthRequest="34"
+                     HorizontalOptions="Start"
+                     BackgroundColor="Transparent"
+                     Margin="0,0,0,14" />
+
+        <!-- Contenedor Central de Opciones -->
+        <Border Grid.Row="1"
+                BackgroundColor="#F8F8F8"
+                Stroke="#EEEEEE"
+                StrokeThickness="1"
+                Padding="18,22"
+                VerticalOptions="Start">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Offset="0,3"
+                        Radius="6"
+                        Opacity="0.14" />
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="18">
+                <Label Text="Método de Pago"
+                       FontSize="17"
+                       FontAttributes="Bold"
+                       TextColor="#111111" />
+
+                <!-- Opción 1: Tarjeta de Crédito / Débito -->
+                <Border x:Name="cardTarjeta"
+                        BackgroundColor="#FFFFFF"
+                        Stroke="#C85A28"
+                        StrokeThickness="2"
+                        Padding="14,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSeleccionarTarjetaTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="14">
+                        <Image Grid.Column="0"
+                               Source="tarjeta_bancaria.png"
+                               HeightRequest="42"
+                               WidthRequest="42"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center" />
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="2">
+                            <Label Text="Tarjeta de Crédito / Debito"
+                                   FontSize="13.5"
+                                   FontAttributes="Bold"
+                                   TextColor="#111111" />
+                            <Label Text="Pago digital inmediato"
+                                   FontSize="11"
+                                   TextColor="#666666" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- Opción 2: Efectivo en tienda -->
+                <Border x:Name="cardEfectivo"
+                        BackgroundColor="#FFFFFF"
+                        Stroke="#E5E5E5"
+                        StrokeThickness="1"
+                        Padding="14,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSeleccionarEfectivoTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="14">
+                        <Image Grid.Column="0"
+                               Source="dinero_en_efectivo.png"
+                               HeightRequest="42"
+                               WidthRequest="42"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center" />
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="2">
+                            <Label Text="Efectivo en tienda"
+                                   FontSize="13.5"
+                                   FontAttributes="Bold"
+                                   TextColor="#111111" />
+                            <Label Text="Pago pendiente al recoger"
+                                   FontSize="11"
+                                   TextColor="#666666" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Botón Inferior Continuar -->
+        <Button Grid.Row="2"
+                Text="Continuar"
+                Clicked="OnContinuarClicked"
+                BackgroundColor="#C85A28"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="20"
+                CornerRadius="12"
+                HeightRequest="50" />
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PlantillasUsuario.Models"
+             x:Class="PlantillasUsuario.Views.GestionTarjetasPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto"
+          Padding="20,16,20,24">
+
+        <!-- 1. Encabezado: Flecha Regresar y Título -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="Auto,*"
+              Margin="0,0,0,18">
+            <ImageButton Grid.Column="0"
+                         Source="flecha.png"
+                         Clicked="OnRegresarClicked"
+                         HeightRequest="34"
+                         WidthRequest="34"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         BackgroundColor="Transparent" />
+
+            <Label Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Métodos de pago"
+                   FontSize="19"
+                   FontAttributes="Bold"
+                   TextColor="#111111"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+
+        <!-- 2. Subtítulo Tarjetas Guardadas -->
+        <Label Grid.Row="1"
+               Text="Tarjetas Guardadas"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="#111111"
+               Margin="4,0,0,12" />
+
+        <!-- 3. Lista de Tarjetas Guardadas -->
+        <CollectionView x:Name="cvTarjetas"
+                        Grid.Row="2"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="16" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="8"
+                                     Padding="20">
+                    <Image Source="tarjeta_bancaria.png"
+                           HeightRequest="52"
+                           WidthRequest="52"
+                           Opacity="0.5"
+                           HorizontalOptions="Center" />
+                    <Label Text="No tienes tarjetas guardadas"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#444444"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Presiona 'Agregar Tarjeta' para registrar una nueva."
+                           FontSize="13"
+                           TextColor="#777777"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:TarjetaPago">
+                    <Border BackgroundColor="#E0E0E0"
+                            Stroke="#D0D0D0"
+                            StrokeThickness="1"
+                            Padding="16,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <!-- Fila Superior: Ícono Tarjeta a la izquierda | Bote de basura a la derecha -->
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Image Grid.Column="0"
+                                       Source="tarjeta_bancaria.png"
+                                       HeightRequest="42"
+                                       WidthRequest="42"
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="Start" />
+
+                                <ImageButton Grid.Column="1"
+                                             Source="eliminar.png"
+                                             Clicked="OnBoteBasuraClicked"
+                                             CommandParameter="{Binding .}"
+                                             HeightRequest="32"
+                                             WidthRequest="32"
+                                             BackgroundColor="Transparent"
+                                             VerticalOptions="Center" />
+                            </Grid>
+
+                            <!-- Número Enmascarado -->
+                            <Label Text="{Binding NumeroEnmascarado}"
+                                   FontSize="16"
+                                   TextColor="#111111" />
+
+                            <!-- Titular y Vencimiento -->
+                            <HorizontalStackLayout Spacing="16">
+                                <Label Text="{Binding Titular}"
+                                       FontSize="14.5"
+                                       TextColor="#4A4A4A" />
+
+                                <Label Text="{Binding Vencimiento}"
+                                       FontSize="14.5"
+                                       TextColor="#4A4A4A" />
+                            </HorizontalStackLayout>
+
+                            <!-- Fila Inferior: Píldora Predeterminada + Texto Eliminar -->
+                            <Grid ColumnDefinitions="Auto,*"
+                                  Margin="0,2,0,0">
+                                <Border Grid.Column="0"
+                                        IsVisible="{Binding EsPredeterminada}"
+                                        BackgroundColor="#C85A28"
+                                        StrokeThickness="0"
+                                        Padding="12,3"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+                                    <Label Text="Predeterminada"
+                                           FontSize="10.5"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                </Border>
+
+                                <Label Grid.Column="1"
+                                       Text="Eliminar"
+                                       FontSize="15"
+                                       TextColor="#111111"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnTextoEliminarTapped"
+                                                              CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- 4. Botones Inferiores: Botón Rojo de Seguridad (oculto al inicio) + Agregar Tarjeta -->
+        <VerticalStackLayout Grid.Row="3"
+                             Spacing="12"
+                             Margin="0,12,0,0">
+
+            <Button x:Name="btnConfirmarEliminar"
+                    Text="Eliminar Tarjeta"
+                    Clicked="OnConfirmarEliminarClicked"
+                    IsVisible="False"
+                    BackgroundColor="#EF4444"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    CornerRadius="12"
+                    HeightRequest="50" />
+
+            <Button Text="Agregar Tarjeta"
+                    Clicked="OnAgregarTarjetaClicked"
+                    BackgroundColor="#C85A28"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    CornerRadius="12"
+                    HeightRequest="50" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

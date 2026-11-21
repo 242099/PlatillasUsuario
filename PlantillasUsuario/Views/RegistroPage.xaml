@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlantillasUsuario.Views.RegistroPage"
+             BackgroundColor="#FAF5F0"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Barra Superior: Botón Regresar y Título -->
+        <Grid Grid.Row="0"
+              Padding="20,16,20,6"
+              ColumnDefinitions="Auto,*">
+
+            <Border Grid.Column="0"
+                    BackgroundColor="#ECD7CF"
+                    StrokeThickness="0"
+                    HeightRequest="46"
+                    WidthRequest="46"
+                    Padding="10"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegresarTapped" />
+                </Border.GestureRecognizers>
+
+                <Image Source="flecha.png"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Border>
+
+            <Label Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Crear Cuenta"
+                   FontSize="21"
+                   FontAttributes="Bold"
+                   TextColor="#111111"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Contenido Desplazable -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="30,10,30,30"
+                                 Spacing="14">
+
+                <!-- Logotipo y Título -->
+                <VerticalStackLayout Spacing="4"
+                                     HorizontalOptions="Center"
+                                     Margin="0,4,0,10">
+                    <Image Source="logo_provecha.png"
+                           HeightRequest="135"
+                           WidthRequest="135"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="PROVECHA"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#111111"
+                           CharacterSpacing="1"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Campo Nombre -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Nombre"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#B5522D"
+                           Margin="2,0,0,0" />
+
+                    <Border Stroke="#4A3F3A"
+                            StrokeThickness="1.2"
+                            BackgroundColor="White"
+                            HeightRequest="44"
+                            Padding="12,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="txtNombre"
+                               ReturnType="Next"
+                               TextColor="#1E1E1E"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Campo Correo electrónico -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Correo electrónico"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#B5522D"
+                           Margin="2,0,0,0" />
+
+                    <Border Stroke="#4A3F3A"
+                            StrokeThickness="1.2"
+                            BackgroundColor="White"
+                            HeightRequest="44"
+                            Padding="12,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="txtCorreo"
+                               Keyboard="Email"
+                               ReturnType="Next"
+                               TextColor="#1E1E1E"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Campo Contraseña -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Contraseña"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#B5522D"
+                           Margin="2,0,0,0" />
+
+                    <Border Stroke="#4A3F3A"
+                            StrokeThickness="1.2"
+                            BackgroundColor="White"
+                            HeightRequest="44"
+                            Padding="12,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="txtContrasena"
+                               IsPassword="True"
+                               ReturnType="Next"
+                               TextColor="#1E1E1E"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Campo Confirmar contraseña -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Confirmar contraseña"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#B5522D"
+                           Margin="2,0,0,0" />
+
+                    <Border Stroke="#4A3F3A"
+                            StrokeThickness="1.2"
+                            BackgroundColor="White"
+                            HeightRequest="44"
+                            Padding="12,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="txtConfirmarContrasena"
+                               IsPassword="True"
+                               ReturnType="Done"
+                               TextColor="#1E1E1E"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Botón Crear cuenta -->
+                <Button Text="Crear cuenta"
+                        Clicked="OnCrearCuentaClicked"
+                        BackgroundColor="#B5522D"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        WidthRequest="260"
+                        HorizontalOptions="Center"
+                        Margin="0,16,0,10" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PlantillasUsuario.Models"
+             x:Class="PlantillasUsuario.Views.BienvenidaPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto"
+          Padding="28,40,28,36">
+
+        <!-- Carrusel deslizante de 3 pantallas -->
+        <CarouselView x:Name="carruselBienvenida"
+                      Grid.Row="0"
+                      Loop="False"
+                      PositionChanged="OnCarruselPositionChanged">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="models:PasoBienvenida">
+                    <VerticalStackLayout VerticalOptions="Center"
+                                         HorizontalOptions="Center"
+                                         Spacing="14"
+                                         Padding="10,0">
+
+                        <!-- Ilustración superior -->
+                        <Image Source="{Binding Imagen}"
+                               HeightRequest="130"
+                               WidthRequest="130"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,10" />
+
+                        <!-- Título en negrita -->
+                        <Label Text="{Binding Titulo}"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#111111"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="Center" />
+
+                        <!-- Subtítulo descriptivo -->
+                        <Label Text="{Binding Descripcion}"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#4A4A4A"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="Center"
+                               MaxLines="3"
+                               LineHeight="1.2"
+                               MaximumWidthRequest="280" />
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <!-- Botón inferior dinámico (Siguiente / Comenzar) -->
+        <Button x:Name="btnAccion"
+                Grid.Row="1"
+                Text="Siguiente"
+                Clicked="OnAccionClicked"
+                BackgroundColor="#B5522D"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="20"
+                CornerRadius="12"
+                HeightRequest="50"
+                WidthRequest="260"
+                HorizontalOptions="Center" />
+
+    </Grid>
+</ContentPage>

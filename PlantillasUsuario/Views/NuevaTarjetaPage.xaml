@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlantillasUsuario.Views.NuevaTarjetaPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20,16,20,24">
+
+        <!-- Flecha Regresar -->
+        <ImageButton Grid.Row="0"
+                     Source="flecha.png"
+                     Clicked="OnRegresarClicked"
+                     HeightRequest="34"
+                     WidthRequest="34"
+                     HorizontalOptions="Start"
+                     BackgroundColor="Transparent"
+                     Margin="0,0,0,10" />
+
+        <!-- Contenido Desplazable -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16"
+                                 Padding="2,2,2,10">
+
+                <!-- Encabezado Nuevo pago con tarjeta -->
+                <Border BackgroundColor="#F8F8F8"
+                        Stroke="#EEEEEE"
+                        StrokeThickness="1"
+                        Padding="18,16">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Nuevo pago con tarjeta"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#111111"
+                               VerticalOptions="Center" />
+
+                        <Image Grid.Column="1"
+                               Source="tarjeta_bancaria.png"
+                               HeightRequest="46"
+                               WidthRequest="46"
+                               Aspect="AspectFit" />
+                    </Grid>
+                </Border>
+
+                <!-- Formulario Datos de la tarjeta -->
+                <Border BackgroundColor="#F8F8F8"
+                        Stroke="#EEEEEE"
+                        StrokeThickness="1"
+                        Padding="18,18,18,24">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Datos de la tarjeta:"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#111111" />
+
+                        <!-- Nombre del titular -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Nombre del titular"
+                                   FontSize="14"
+                                   TextColor="#222222" />
+                            <Border BackgroundColor="White"
+                                    Stroke="#D5D5D5"
+                                    StrokeThickness="1"
+                                    HeightRequest="40"
+                                    Padding="10,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="txtTitular"
+                                       TextColor="#111111"
+                                       BackgroundColor="Transparent"
+                                       VerticalOptions="Center" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Número de tarjeta -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Número de tarjeta"
+                                   FontSize="14"
+                                   TextColor="#222222" />
+                            <Border BackgroundColor="White"
+                                    Stroke="#D5D5D5"
+                                    StrokeThickness="1"
+                                    HeightRequest="40"
+                                    Padding="10,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="txtNumero"
+                                       Keyboard="Numeric"
+                                       MaxLength="16"
+                                       TextColor="#111111"
+                                       BackgroundColor="Transparent"
+                                       VerticalOptions="Center" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Marca -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Marca"
+                                   FontSize="14"
+                                   TextColor="#222222" />
+                            <Border BackgroundColor="White"
+                                    Stroke="#D5D5D5"
+                                    StrokeThickness="1"
+                                    HeightRequest="40"
+                                    Padding="10,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="txtMarca"
+                                       TextColor="#111111"
+                                       BackgroundColor="Transparent"
+                                       VerticalOptions="Center" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Vencimiento y CVV/CVC -->
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="18">
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Spacing="4">
+                                <Label Text="Vencimiento"
+                                       FontSize="14"
+                                       TextColor="#222222" />
+                                <Border BackgroundColor="White"
+                                        Stroke="#D5D5D5"
+                                        StrokeThickness="1"
+                                        HeightRequest="40"
+                                        Padding="10,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+                                    <Entry x:Name="txtVencimiento"
+                                           MaxLength="5"
+                                           TextColor="#111111"
+                                           BackgroundColor="Transparent"
+                                           VerticalOptions="Center" />
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Spacing="4">
+                                <Label Text="CVV/CVC"
+                                       FontSize="14"
+                                       TextColor="#222222" />
+                                <Border BackgroundColor="White"
+                                        Stroke="#D5D5D5"
+                                        StrokeThickness="1"
+                                        HeightRequest="40"
+                                        Padding="10,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+                                    <Entry x:Name="txtCvv"
+                                           Keyboard="Numeric"
+                                           IsPassword="True"
+                                           MaxLength="4"
+                                           TextColor="#111111"
+                                           BackgroundColor="Transparent"
+                                           VerticalOptions="Center" />
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Casilla de Términos y Condiciones -->
+                <Border BackgroundColor="#F8F8F8"
+                        Stroke="#EEEEEE"
+                        StrokeThickness="1"
+                        Padding="12,10"
+                        Margin="0,12,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="8">
+                        <CheckBox x:Name="chkTerminos"
+                                  Grid.Column="0"
+                                  Color="#C85A28"
+                                  VerticalOptions="Center" />
+
+                        <Label Grid.Column="1"
+                               Text="Acepto los términos y condiciones para el pago seguro con tarjeta"
+                               FontSize="11.5"
+                               TextColor="#666666"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botón Inferior Agregar tarjeta -->
+        <Button Grid.Row="2"
+                Text="Agregar tarjeta"
+                Clicked="OnAgregarTarjetaClicked"
+                BackgroundColor="#C85A28"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="20"
+                CornerRadius="12"
+                HeightRequest="50" />
+
+    </Grid>
+</ContentPage>

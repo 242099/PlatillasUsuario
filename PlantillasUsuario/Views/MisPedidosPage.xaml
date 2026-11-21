@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PlantillasUsuario.Models"
+             x:Class="PlantillasUsuario.Views.MisPedidosPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- 1. Encabezado Superior: Solo Título Centrado -->
+        <Label Grid.Row="0"
+               Text="Mis Pedidos"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#111111"
+               HorizontalOptions="Center"
+               Margin="0,24,0,16" />
+
+        <!-- 2. Lista Dinámica de Pedidos Confirmados -->
+        <CollectionView x:Name="cvPedidos"
+                        Grid.Row="1"
+                        Margin="22,4,22,0"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="18" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="10"
+                                     Padding="24">
+                    <Image Source="bolsa.png"
+                           HeightRequest="56"
+                           WidthRequest="56"
+                           Opacity="0.45"
+                           HorizontalOptions="Center" />
+                    <Label Text="Aún no tienes pedidos"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="#444444"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Cuando reserves un paquete sorpresa aparecerá aquí con su código de recolección."
+                           FontSize="13"
+                           TextColor="#777777"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.Footer>
+                <BoxView HeightRequest="18" Color="Transparent" />
+            </CollectionView.Footer>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PedidoReservado">
+                    <Border BackgroundColor="#F7F7F7"
+                            Stroke="#EAEAEA"
+                            StrokeThickness="1"
+                            Padding="16,12,16,12"
+                            Margin="2,2,2,4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#000000"
+                                    Offset="0,3"
+                                    Radius="6"
+                                    Opacity="0.16" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPedidoTapped"
+                                                  CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+
+                        <VerticalStackLayout Spacing="4">
+
+                            <!-- Fila Superior: Badge PENDIENTE/PAGADO + Texto "Hoy" -->
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#B5522D"
+                                        StrokeThickness="0"
+                                        Padding="14,4"
+                                        HorizontalOptions="Start">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+
+                                    <Label Text="{Binding Estado}"
+                                           FontSize="10"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                </Border>
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding FechaTexto}"
+                                       FontSize="12"
+                                       TextColor="#333333"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                            <!-- Nombre del Paquete -->
+                            <Label Text="{Binding Paquete.NombrePaquete}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#111111"
+                                   Margin="4,4,0,0" />
+
+                            <!-- Nombre de la Panadería -->
+                            <Label Text="{Binding Paquete.Panaderia}"
+                                   FontSize="12"
+                                   TextColor="#555555"
+                                   Margin="4,0,0,2" />
+
+                            <!-- Precio Grande en Terracota -->
+                            <Label Text="{Binding Paquete.PrecioActual}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#B5522D"
+                                   Margin="4,2,0,6" />
+
+                            <!-- Línea Horizontal Divisoria -->
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#4A4A4A"
+                                     Margin="4,0,4,6" />
+
+                            <!-- Fila Inferior: Código a la izquierda | RES - XXXX-2026 a la derecha -->
+                            <Grid ColumnDefinitions="Auto,*"
+                                  Margin="10,0,6,0">
+                                <Label Grid.Column="0"
+                                       Text="Código:"
+                                       FontSize="10.5"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"
+                                       VerticalOptions="Center" />
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding CodigoFormateado}"
+                                       FontSize="10.5"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- 3. Barra de Navegación Inferior -->
+        <Border Grid.Row="2"
+                BackgroundColor="#FFFFFF"
+                Stroke="#DCDCDC"
+                StrokeThickness="1"
+                Padding="10,8,10,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18,18,0,0" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Offset="0,-3"
+                        Radius="8"
+                        Opacity="0.12" />
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="8">
+
+                <!-- Pestaña Inicio (Inactiva) -->
+                <Border Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnInicioTapped" />
+                    </Border.GestureRecognizers>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="casa.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Inicio"
+                               FontSize="12.5"
+                               TextColor="#111111"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Pestaña Pedidos (ACTIVA con sombreado) -->
+                <Border Grid.Column="1"
+                        BackgroundColor="#FBECE6"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="bolsa.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Pedidos"
+                               FontSize="12.5"
+                               FontAttributes="Bold"
+                               TextColor="#B5522D"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Pestaña Favoritos (Inactiva) -->
+                <Border Grid.Column="2"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFavoritosTapped" />
+                    </Border.GestureRecognizers>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="amor.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Favoritos"
+                               FontSize="12.5"
+                               TextColor="#111111"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>

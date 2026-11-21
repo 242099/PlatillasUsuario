@@ -1,0 +1,149 @@
+is_global = true
+build_property.TargetFramework = net9.0-windows10.0.19041.0
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PlantillasUsuario
+build_property.ProjectDir = C:\Users\danie\source\repos\PlantillasUsuario\PlantillasUsuario\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotExportsEnabled = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptIn = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptOut = 
+build_property.CsWinRTCcwLookupTableGeneratorEnabled = true
+build_property.CsWinRTMergeReferencedActivationFactories = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/BienvenidaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.BienvenidaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\BienvenidaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\BienvenidaPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/DetallePaquetePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.DetallePaquetePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DetallePaquetePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DetallePaquetePage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/FavoritosPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.FavoritosPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FavoritosPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FavoritosPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/GestionTarjetasPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.GestionTarjetasPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GestionTarjetasPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GestionTarjetasPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/InicioPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.InicioPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\InicioPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\InicioPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/MetodoPagoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.MetodoPagoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MetodoPagoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MetodoPagoPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/MisPedidosPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.MisPedidosPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MisPedidosPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MisPedidosPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/NuevaTarjetaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.NuevaTarjetaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\NuevaTarjetaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\NuevaTarjetaPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/PagoEfectivoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.PagoEfectivoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PagoEfectivoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PagoEfectivoPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/PagoTarjetaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.PagoTarjetaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PagoTarjetaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PagoTarjetaPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/PerfilNegocioPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.PerfilNegocioPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PerfilNegocioPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PerfilNegocioPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/PerfilUsuarioPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.PerfilUsuarioPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PerfilUsuarioPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PerfilUsuarioPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/PrincipalPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.PrincipalPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PrincipalPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PrincipalPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/RegistroPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.RegistroPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegistroPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegistroPage.xaml
+
+[C:/Users/danie/source/repos/PlantillasUsuario/PlantillasUsuario/Views/ReservaConfirmadaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PlantillasUsuario.Views.ReservaConfirmadaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ReservaConfirmadaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ReservaConfirmadaPage.xaml

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlantillasUsuario.Views.PagoTarjetaPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20,16,20,24">
+
+        <!-- Flecha Regresar -->
+        <ImageButton Grid.Row="0"
+                     Source="flecha.png"
+                     Clicked="OnRegresarClicked"
+                     HeightRequest="34"
+                     WidthRequest="34"
+                     HorizontalOptions="Start"
+                     BackgroundColor="Transparent"
+                     Margin="0,0,0,14" />
+
+        <!-- Contenedor Principal Pago con Tarjeta -->
+        <Border Grid.Row="1"
+                BackgroundColor="#F8F8F8"
+                Stroke="#EEEEEE"
+                StrokeThickness="1"
+                Padding="16,20"
+                VerticalOptions="Start">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="16">
+                <Label Text="Pago con Tarjeta"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#111111" />
+
+                <!-- Tarjeta Guardada -->
+                <Border BackgroundColor="#F3F3F3"
+                        Stroke="#E2E2E2"
+                        StrokeThickness="1"
+                        Padding="14,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000"
+                                Offset="0,2"
+                                Radius="5"
+                                Opacity="0.14" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="14">
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              ColumnSpacing="12">
+                            <Image Grid.Column="0"
+                                   Source="tarjeta_bancaria.png"
+                                   HeightRequest="38"
+                                   WidthRequest="38"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center" />
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2">
+                                <Label Text="Tarjeta guardada"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="#111111" />
+                                <Label x:Name="lblNumeroTarjeta"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="#222222" />
+                            </VerticalStackLayout>
+
+                            <Border Grid.Column="2"
+                                    BackgroundColor="#B5522D"
+                                    StrokeThickness="0"
+                                    Padding="10,4"
+                                    VerticalOptions="Start">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="6" />
+                                </Border.StrokeShape>
+                                <Label Text="Predeterminada"
+                                       FontSize="10"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                            </Border>
+                        </Grid>
+
+                        <Label x:Name="lblTitular"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="#111111"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Cuadro Naranja Suave de Confirmación -->
+                <Border BackgroundColor="#FFF2DF"
+                        Stroke="#F3C18D"
+                        StrokeThickness="1.2"
+                        Padding="16,18">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <Label x:Name="lblPreguntaCobro"
+                           FontSize="13.5"
+                           FontAttributes="Bold"
+                           TextColor="#111111"
+                           HorizontalTextAlignment="Center"
+                           LineHeight="1.2" />
+                </Border>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Enlace + Botón Inferior -->
+        <VerticalStackLayout Grid.Row="2"
+                             Spacing="14">
+
+            <Label Text="+ Usar otra tarjeta de crédito/débito"
+                   FontSize="14.5"
+                   FontAttributes="Bold"
+                   TextColor="#111111"
+                   HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnUsarOtraTarjetaTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Sí, autorizar pago"
+                    Clicked="OnAutorizarPagoClicked"
+                    BackgroundColor="#C85A28"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    CornerRadius="12"
+                    HeightRequest="50" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

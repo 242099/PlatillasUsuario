@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PlantillasUsuario.Models"
+             x:Class="PlantillasUsuario.Views.FavoritosPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- 1. Encabezado Superior: Título Centrado -->
+        <Label Grid.Row="0"
+               Text="Mis Favoritos"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#111111"
+               HorizontalOptions="Center"
+               Margin="0,24,0,16" />
+
+        <!-- 2. Lista de Paquetes Favoritos -->
+        <CollectionView x:Name="cvFavoritos"
+                        Grid.Row="1"
+                        Margin="20,4,20,0"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="18" />
+            </CollectionView.ItemsLayout>
+
+            <!-- Vista vacía si el usuario quita todos los favoritos -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="10"
+                                     Padding="24">
+                    <Image Source="amor.png"
+                           HeightRequest="56"
+                           WidthRequest="56"
+                           Opacity="0.45"
+                           HorizontalOptions="Center" />
+                    <Label Text="Aún no tienes favoritos"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="#444444"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Toca el ícono de corazón dentro de cualquier paquete sorpresa para guardarlo aquí."
+                           FontSize="13"
+                           TextColor="#777777"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.Footer>
+                <BoxView HeightRequest="18" Color="Transparent" />
+            </CollectionView.Footer>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PaqueteSorpresa">
+                    <Border BackgroundColor="#FAF6F4"
+                            Stroke="#E6E0DC"
+                            StrokeThickness="1"
+                            Margin="2,2,2,4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#000000"
+                                    Offset="0,3"
+                                    Radius="6"
+                                    Opacity="0.16" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTarjetaFavoritoTapped"
+                                                  CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+
+                        <Grid RowDefinitions="140,Auto">
+
+                            <!-- Imagen Superior + Badge Disponible/Agotado + Botón Corazón -->
+                            <Grid Grid.Row="0">
+                                <Image Source="{Binding Imagen}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="140" />
+
+                                <!-- Badge Superior Izquierdo (Disponible / Agotado) -->
+                                <Border BackgroundColor="{Binding ColorEstado}"
+                                        StrokeThickness="0"
+                                        Padding="14,3"
+                                        Margin="10,10,0,0"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+
+                                    <Label Text="{Binding TextoEstado}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="#111111" />
+                                </Border>
+
+                                <!-- Círculo Blanco con Corazón Rojo -->
+                                <Border BackgroundColor="White"
+                                        StrokeThickness="0"
+                                        HeightRequest="42"
+                                        WidthRequest="42"
+                                        Padding="9"
+                                        Margin="0,8,10,0"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="21" />
+                                    </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#000000"
+                                                Offset="0,2"
+                                                Radius="4"
+                                                Opacity="0.22" />
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnQuitarFavoritoTapped"
+                                                              CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Image Source="corazon.png"
+                                           Aspect="AspectFit" />
+                                </Border>
+                            </Grid>
+
+                            <!-- Contenido Inferior de la Tarjeta -->
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Padding="12,8,12,12"
+                                                 Spacing="6">
+
+                                <Label Text="{Binding Panaderia}"
+                                       FontSize="13.5"
+                                       FontAttributes="Bold"
+                                       TextColor="#111111" />
+
+                                <!-- Recuadro Punteado con Paquete, Horario y Precio -->
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="#BDBDBD"
+                                        StrokeThickness="1.2"
+                                        StrokeDashArray="5,4"
+                                        Padding="10,8"
+                                        Margin="4,2,4,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label Text="{Binding NombrePaquete}"
+                                               FontSize="11.5"
+                                               TextColor="#222222" />
+
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <Label Grid.Column="0"
+                                                   Text="{Binding HorarioRecoger}"
+                                                   FontSize="11"
+                                                   TextColor="#222222"
+                                                   VerticalOptions="End" />
+
+                                            <HorizontalStackLayout Grid.Column="1"
+                                                                   Spacing="5"
+                                                                   VerticalOptions="End">
+                                                <Label Text="{Binding PrecioAnterior}"
+                                                       FontSize="11"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#B5522D"
+                                                       TextDecorations="Strikethrough"
+                                                       VerticalOptions="End"
+                                                       Margin="0,0,0,2" />
+
+                                                <Label Text="{Binding PrecioActual}"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#B5522D"
+                                                       VerticalOptions="End" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        
+        <!-- 3. Barra de Navegación Inferior -->
+        <Border Grid.Row="2"
+                BackgroundColor="#FFFFFF"
+                Stroke="#DCDCDC"
+                StrokeThickness="1"
+                Padding="10,8,10,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18,18,0,0" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Offset="0,-3"
+                        Radius="8"
+                        Opacity="0.12" />
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="8">
+
+                <!-- Pestaña Inicio (Inactiva) -->
+                <Border Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnInicioTapped" />
+                    </Border.GestureRecognizers>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="casa.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Inicio"
+                               FontSize="12.5"
+                               TextColor="#111111"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Pestaña Pedidos (Inactiva) -->
+                <Border Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPedidosTapped" />
+                    </Border.GestureRecognizers>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="bolsa.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Pedidos"
+                               FontSize="12.5"
+                               TextColor="#111111"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Pestaña Favoritos (ACTIVA con sombreado) -->
+                <Border Grid.Column="2"
+                        BackgroundColor="#FBECE6"
+                        StrokeThickness="0"
+                        Padding="0,6"
+                        HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="3"
+                                         HorizontalOptions="Center">
+                        <Image Source="amor.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="Favoritos"
+                               FontSize="12.5"
+                               FontAttributes="Bold"
+                               TextColor="#B5522D"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>
